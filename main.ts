@@ -10,11 +10,17 @@ basic.forever(function () {
 	
 })
 basic.forever(function () {
+    let objeto: game.LedSprite = null
     basic.pause(randint(1000, 1500))
     jugador = game.createSprite(randint(0, 4), 0)
     for (let index = 0; index < 4; index++) {
-        let objeto: game.LedSprite = null
         basic.pause(200)
         objeto.change(LedSpriteProperty.X, 1)
     }
+    if (objeto.isTouching(jugador)) {
+        game.gameOver()
+    }
+    basic.pause(200)
+    game.addScore(1)
+    objeto.delete()
 })
